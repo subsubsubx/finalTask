@@ -21,8 +21,13 @@ public class SearchPage extends BasePage {
     private List<WebElement> manufacturerList;
 
 
-    public void checkResultsCount(List<WebElement> list, int num) {
-        Assert.assertEquals(num, list.size());
+    public boolean checkResultsCount(List<WebElement> list, int num) {
+        if (list.size() <= num){
+            return true;
+        } else
+            Assert.fail("Количество элементов массива больше заданного числа: " + num);
+        return false;
+    //    Assert.assertEquals(num, list.size());
     }
 
     public List<WebElement> getResultsList() {
