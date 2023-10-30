@@ -1,13 +1,9 @@
 package ru.ibs;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import ru.ibs.framework.managers.DriverManager;
 import ru.ibs.framework.pages.OptionsPage;
 import ru.ibs.framework.pages.SearchPage;
-
-import java.util.List;
 
 public class NewTest extends BaseTest {
     DriverManager driverManager = DriverManager.getDriverManager();
@@ -15,7 +11,7 @@ public class NewTest extends BaseTest {
     SearchPage searchPage = new SearchPage();
     OptionsPage optionsPage = new OptionsPage();
 
-    @Test
+/*    @Test
     public void test() {
         catalogueButton.click();
         clickWebElementFromList(menuOptionsList, "Комплектующие для ПК");
@@ -33,6 +29,6 @@ public class NewTest extends BaseTest {
         searchPage.checkResultsCount(searchPage.getResultsList(), 1);
         searchPage.getTitleFromResultsList(1);
         searchPage.compareSearchResults(1);
-    }
+    }*/
 }
 

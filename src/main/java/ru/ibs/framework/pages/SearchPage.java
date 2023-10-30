@@ -49,13 +49,23 @@ public class SearchPage extends BasePage {
 
 
 
-    public void waitUntilSearchDone() {
+ /*   public void waitUntilSearchDone() {
         wait.until(ExpectedConditions.presenceOfElementLocated(By
                 .xpath("//span[contains(@class, 'PageTitle_count')]")));
-    /*  wait.until(ExpectedConditions.textToBePresentInElement(driverManager.getDriver().findElement(By
+      wait.until(ExpectedConditions.textToBePresentInElement(driverManager.getDriver().findElement(By
                         .xpath("//span[contains(@class, 'PageTitle_count')]")),
-                "товар"));*/
-    }
+                "товар"));
+    }*/
+        public void waitUntilSearchDone() {
+            By locator = By.xpath("//span[contains(@class,'PageTitle_count') and contains(text(),'товар')]");
+            try {
+                wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+            }
+            catch (Exception e){}
+            wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        }
+
+
 
     public void compareSearchResults(int num){
         String s = getTitleFromResultsList(num);
