@@ -23,6 +23,7 @@ public class BasePage {
     @FindBy(xpath = "//button[contains(@class, 'NavigationBar_burgerButton')]")
     protected WebElement catalogueButton;
 
+
     @FindBy(xpath = "//h1[contains(@class, 'PageTitle_title')]")
     protected WebElement pageTitle;
 
@@ -68,12 +69,8 @@ public class BasePage {
         Assert.fail("Значение '" + s + "' не найдено");
     }
 
-    protected void checkOpenPage(String s) {
-
-
-        wait.until(ExpectedConditions
-                .textToBe(By
-                        .xpath("//h1[contains(@class, 'PageTitle_title')]"), s));
+    protected void waitPageTitle(String s) {
+        wait.until(ExpectedConditions.textToBePresentInElement(pageTitle, s));
         Assert.assertEquals("Заголовок " + s + " не найден", s, pageTitle.getText());
     }
 }

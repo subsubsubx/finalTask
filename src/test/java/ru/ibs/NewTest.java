@@ -23,13 +23,16 @@ public class NewTest extends BaseTest {
         clickWebElementFromList(optionsPage.getOptionsList(), "Видеокарты");
         waitPageTitle("Видеокарты");
         searchPage.setMinPrice(2000);
-        clickWebElementFromList(searchPage.getManufacturerList(), "Gigabyte");
-        searchPage.checkResultsCount(searchPage.getResultsList(), 24);
         searchPage.waitUntilSearchDone();
+        clickWebElementFromList(searchPage.getManufacturerList(), "Gigabyte");
+        searchPage.waitUntilSearchDone();
+        searchPage.checkResultsCount(searchPage.getResultsList(), 24);
         String s = searchPage.getTitleFromResultsList(1);
         setFieldAndSubmit(searchBar, s);
         searchPage.waitUntilSearchDone();
         searchPage.checkResultsCount(searchPage.getResultsList(), 1);
+        searchPage.getTitleFromResultsList(1);
+        searchPage.compareSearchResults(1);
     }
 }
 
