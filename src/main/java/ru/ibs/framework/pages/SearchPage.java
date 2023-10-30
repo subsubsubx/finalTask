@@ -22,24 +22,26 @@ public class SearchPage extends BasePage {
 
 
     public boolean checkResultsCount(List<WebElement> list, int num) {
-        if (list.size() <= num){
+        if (list.size() <= num) {
             return true;
         } else
             Assert.fail("Количество элементов массива больше заданного числа: " + num);
         return false;
-    //    Assert.assertEquals(num, list.size());
     }
 
     public List<WebElement> getResultsList() {
-        List<WebElement> tmp = driverManager.getDriver().findElements(By
+        return driverManager.getDriver().findElements(By
                 .xpath("//div[contains(@class, 'ListingRenderer_row')]/div"));
-        return tmp;
     }
 
+    public String getTitleFromResultsList(int num){
+        return getResultsList().get(num  - 1).findElement(By.xpath(".//h6")).getText();
+    }
 
     public void setMinPrice(int num) {
         waitClickability(minPrice);
         setField(minPrice, num);
+        Assert.assertEquals(Integer.parseInt(minPrice.getAttribute("value")), num);
     }
 
     public void waitUntilSearchDone() {

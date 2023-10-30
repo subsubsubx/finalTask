@@ -26,22 +26,10 @@ public class NewTest extends BaseTest {
         clickWebElementFromList(searchPage.getManufacturerList(), "Gigabyte");
         searchPage.checkResultsCount(searchPage.getResultsList(), 24);
         searchPage.waitUntilSearchDone();
-        String first = searchPage.getResultsList().get(0).findElement(By.xpath(".//h6")).getText();
-     /*   clickWebElementFromList(manufacturerList, "Gigabyte");
-        pageManager.getSearchPage().checkResultsCount(pageManager.getSearchPage().getResultsList(), 24);
-        pageManager.getSearchPage().waitUntilSearchDone();
-        String first = pageManager.getSearchPage().getResultsList().get(0)
-                .findElement(By.xpath(".//h6")).getText();*/
-    setFieldAndSubmit(searchBar, first);
-    //    pageManager.getSearchPage().waitUntilSearchDone();
-/*        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }*/
+        String s = searchPage.getTitleFromResultsList(1);
+        setFieldAndSubmit(searchBar, s);
         searchPage.waitUntilSearchDone();
         searchPage.checkResultsCount(searchPage.getResultsList(), 1);
- //       pageManager.getSearchPage().checkResultsCount(pageManager.getSearchPage().getResultsList(), 1);
     }
 }
 
