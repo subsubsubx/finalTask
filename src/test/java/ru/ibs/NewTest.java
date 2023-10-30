@@ -19,9 +19,9 @@ public class NewTest extends BaseTest {
     public void test() {
         catalogueButton.click();
         clickWebElementFromList(menuOptionsList, "Комплектующие для ПК");
-        checkOpenPage("Комплектующие для ПК");
+        waitPageTitle("Комплектующие для ПК");
         clickWebElementFromList(optionsPage.getOptionsList(), "Видеокарты");
-        checkOpenPage("Видеокарты");
+        waitPageTitle("Видеокарты");
         searchPage.setMinPrice(2000);
         clickWebElementFromList(searchPage.getManufacturerList(), "Gigabyte");
         searchPage.checkResultsCount(searchPage.getResultsList(), 24);
