@@ -10,24 +10,7 @@ public class SearchPageSteps extends BasePage {
     private final OptionsPage optionsPage = new OptionsPage();
     private final SearchPage searchPage = new SearchPage();
 
-    public void test() {
-        catalogueButton.click();
-        clickWebElementFromList(menuOptionsList, "Комплектующие для ПК");
-        waitPageTitle("Комплектующие для ПК");
-        clickWebElementFromList(optionsPage.getOptionsList(), "Видеокарты");
-        waitPageTitle("Видеокарты");
-        searchPage.setMinPrice(2000);
-        searchPage.waitUntilSearchDone();
-        clickWebElementFromList(searchPage.getManufacturerList(), "Gigabyte");
-        searchPage.waitUntilSearchDone();
-        searchPage.checkResultsCount(searchPage.getResultsList(), 24);
-        String s = searchPage.getTitleFromResultsList(1);
-        setFieldAndSubmit(searchBar, s);
-        searchPage.waitUntilSearchDone();
-        searchPage.checkResultsCount(searchPage.getResultsList(), 1);
-        searchPage.getTitleFromResultsList(1);
-        searchPage.compareSearchResults(1);
-    }
+
 
     @Given("Клик на каталог")
     public void клик_на_каталог() {
